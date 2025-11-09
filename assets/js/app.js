@@ -114,7 +114,7 @@ function renderFeatured() {
           <div>${formatPrice(p.price)}</div>
         </div>
         <div style="margin-top:8px">
-          <a class="btn" href="property.html?id=${p.id}">View</a>
+            <a class="btn primary" href="property.html?id=${p.id}">View</a>
           <button class="btn" onclick="contactAgent('${p.id}')">Contact</button>
         </div>
       </div>
