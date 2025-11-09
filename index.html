@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>DreamNest — Home</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">DreamNest</a>
+      <nav class="nav">
+        <a href="listings.html">Listings</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" class="btn small">🌙</button>
+        <a class="btn primary small" href="listings.html">Explore</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-left">
+          <h1>Find your perfect home with DreamNest</h1>
+          <p>Modern listings, trusted agents, and a smooth search experience — all in one place.</p>
+
+          <form id="quick-search" class="search-card">
+            <input type="text" name="q" id="home-search" placeholder="Search by city, address or zip" />
+            <select id="home-type">
+              <option value="">Any type</option>
+              <option value="House">House</option>
+              <option value="Apartment">Apartment</option>
+              <option value="Condo">Condo</option>
+            </select>
+            <button class="btn primary" type="submit">Search</button>
+          </form>
+
+        </div>
+
+        <div class="hero-right">
+          <div class="slider" id="home-slider">
+            <div class="slide active" style="background-image:url('https://www.richmondamerican.com/blog/wp-content/uploads/2013/03/Dallas_Co_Ext_Wheatlands0721_RET_W.png')"></div>
+            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80')"></div>
+            <div class="slide" style="background-image:url('https://cloudfront.slrlounge.com/wp-content/uploads/2014/07/973A2703-41.jpg')"></div>
+            <div class="slider-controls">
+              <button id="prev-slide" class="btn small">‹</button>
+              <button id="next-slide" class="btn small">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container features">
+      <h2>Why choose DreamNest?</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Verified Listings</h3>
+          <p>Every property is reviewed for quality and accuracy.</p>
+        </div>
+        <div class="feature">
+          <h3>Easy Search</h3>
+          <p>Find homes quickly with powerful filters and search tools.</p>
+        </div>
+        <div class="feature">
+          <h3>Responsive Support</h3>
+          <p>Our team helps you through the entire process.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container preview-listings">
+      <h2>Featured Listings</h2>
+      <div id="featured-grid" class="listing-grid"></div>
+      <div class="center"><a href="listings.html" class="btn primary">View All Listings</a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> DreamNest</div>
+      <div class="social">
+        <a href="#" aria-label="Twitter">Twitter</a>
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

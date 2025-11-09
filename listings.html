@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DreamNest — Listings</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">DreamNest</a>
+      <nav class="nav">
+        <a href="listings.html">Listings</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle-2" class="btn small">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="search-bar">
+      <input id="search-input" placeholder="Search by city, address, or zip" />
+      <select id="filter-type">
+        <option value="">All types</option>
+        <option value="House">House</option>
+        <option value="Apartment">Apartment</option>
+        <option value="Condo">Condo</option>
+      </select>
+      <select id="filter-bed">
+        <option value="">Any beds</option>
+        <option value="1">1+</option>
+        <option value="2">2+</option>
+        <option value="3">3+</option>
+      </select>
+      <select id="filter-sort">
+        <option value="relevance">Sort</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+      </select>
+      <button id="search-btn" class="btn">Search</button>
+    </section>
+
+    <section>
+      <div id="listings-grid" class="listing-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <span id="year2"></span> DreamNest</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>document.getElementById('year2').textContent = new Date().getFullYear();</script>
+</body>
+</html>

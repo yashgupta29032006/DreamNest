@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DreamNest — Contact</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">DreamNest</a>
+      <nav class="nav">
+        <a href="listings.html">Listings</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle-5" class="btn small">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container contact-page">
+    <h1>Contact Us</h1>
+    <p>Have questions or want support? Send us a message.</p>
+
+    <form id="contact-form" class="contact-form" novalidate>
+      <label>
+        Full name
+        <input type="text" id="contact-name" required minlength="3" />
+      </label>
+      <label>
+        Email
+        <input type="email" id="contact-email" required />
+      </label>
+      <label>
+        Message
+        <textarea id="contact-message" required minlength="10"></textarea>
+      </label>
+      <div class="form-actions">
+        <button type="submit" class="btn primary">Send Message</button>
+        <button type="reset" class="btn">Reset</button>
+      </div>
+      <div id="contact-feedback" class="form-feedback" aria-live="polite"></div>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">© <span id="year5"></span> DreamNest</div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>document.getElementById('year5').textContent = new Date().getFullYear();</script>
+</body>
+</html>
