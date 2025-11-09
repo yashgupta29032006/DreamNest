@@ -143,3 +143,44 @@ textarea{min-height:120px}
   .site-header .nav a { font-size: 0.9rem; }
   .brand { font-size: 1.1rem; }
 }
+
+a{
+  text-decoration: none;
+}
+
+.drk-contact{
+  color: white;
+}
+
+[data-theme="dark"] {
+  --primary: #3b82f6;
+}
+
+[data-theme="dark"] .btn:not(.primary) {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .btn:not(.primary):hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.listing-card {
+  background: var(--card);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(2,6,23,0.06);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.listing-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .listing-card:hover {
+  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.25);
+}
+
