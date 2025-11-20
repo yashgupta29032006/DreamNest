@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>DreamNest — Listings</title>
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
+
 <body>
   <header class="site-header">
     <div class="container header-inner">
@@ -22,7 +24,7 @@
   </header>
 
   <main class="container">
-    <section class="search-bar">
+    <section class="search-bar animate-slide-up">
       <input id="search-input" placeholder="Search by city, address, or zip" />
       <select id="filter-type">
         <option value="">All types</option>
@@ -45,7 +47,7 @@
     </section>
 
     <section>
-      <div id="listings-grid" class="listing-grid"></div>
+      <div id="listings-grid" class="listing-grid animate-fade-in delay-200"></div>
     </section>
   </main>
 
@@ -58,4 +60,5 @@
   <script src="assets/js/app.js"></script>
   <script>document.getElementById('year2').textContent = new Date().getFullYear();</script>
 </body>
+
 </html>
