@@ -81,18 +81,18 @@ document.querySelectorAll('[id^="theme-toggle"]').forEach(btn => {
 });
 if (localStorage.getItem('theme') === 'dark') applyTheme('dark');
 
-(function initHomeSlider(){
+(function initHomeSlider() {
   const slides = document.querySelectorAll('#home-slider .slide');
   if (!slides.length) return;
   let idx = 0;
   const next = () => {
     slides[idx].classList.remove('active');
-    idx = (idx+1) % slides.length;
+    idx = (idx + 1) % slides.length;
     slides[idx].classList.add('active');
   };
   const prev = () => {
     slides[idx].classList.remove('active');
-    idx = (idx-1+slides.length) % slides.length;
+    idx = (idx - 1 + slides.length) % slides.length;
     slides[idx].classList.add('active');
   };
   document.getElementById('next-slide')?.addEventListener('click', next);
@@ -103,9 +103,9 @@ if (localStorage.getItem('theme') === 'dark') applyTheme('dark');
 function renderFeatured() {
   const container = document.getElementById('featured-grid');
   if (!container) return;
-  const featured = properties.slice(0,3);
+  const featured = properties.slice(0, 3);
   container.innerHTML = featured.map(p => `
-    <div class="listing-card">
+    <div class="listing-card animate-fade-in">
       <div class="thumb" style="background-image:url('${p.images[0]}')"></div>
       <div class="info">
         <h3>${p.title}</h3>
@@ -123,7 +123,7 @@ function renderFeatured() {
 }
 
 function contactAgent(id) {
-  const p = properties.find(x=>x.id===id);
+  const p = properties.find(x => x.id === id);
   alert(`Contacting agent for ${p.title} — open the Contact page to send a message.`);
   window.location.href = 'contact.html';
 }
@@ -132,7 +132,7 @@ function renderListings(list) {
   const container = document.getElementById('listings-grid');
   if (!container) return;
   container.innerHTML = list.map(p => `
-    <div class="listing-card">
+    <div class="listing-card animate-fade-in">
       <div class="thumb" style="background-image:url('${p.images[0]}')"></div>
       <div class="info">
         <h3>${p.title}</h3>
@@ -162,8 +162,8 @@ function doSearch() {
     return matchesQ && matchesType && matchesBed;
   });
 
-  if (sort === 'price-asc') results.sort((a,b)=>a.price-b.price);
-  if (sort === 'price-desc') results.sort((a,b)=>b.price-a.price);
+  if (sort === 'price-asc') results.sort((a, b) => a.price - b.price);
+  if (sort === 'price-desc') results.sort((a, b) => b.price - a.price);
 
   renderListings(results);
   if (document.getElementById('featured-grid')) renderFeatured();
@@ -200,7 +200,7 @@ function renderPropertyDetail() {
   if (!container) return;
   const params = new URLSearchParams(window.location.search);
   const id = params.get('id');
-  const p = properties.find(x=>x.id===id) || properties[0];
+  const p = properties.find(x => x.id === id) || properties[0];
   if (!p) { container.innerHTML = '<p>Property not found</p>'; return; }
 
   container.innerHTML = `
@@ -209,7 +209,7 @@ function renderPropertyDetail() {
     <div class="gallery">
       <div class="gallery-main" id="gallery-main" style="background-image:url('${p.images[0]}')"></div>
       <div class="gallery-thumbs" id="gallery-thumbs">
-        ${p.images.map((src,i)=>`<div role="button" data-src="${src}" class="thumb-small ${i===0?'active':''}" style="background-image:url('${src}')"></div>`).join('')}
+        ${p.images.map((src, i) => `<div role="button" data-src="${src}" class="thumb-small ${i === 0 ? 'active' : ''}" style="background-image:url('${src}')"></div>`).join('')}
       </div>
     </div>
     <div style="display:flex;gap:20px;margin-top:12px;align-items:flex-start;flex-wrap:wrap">
@@ -232,16 +232,16 @@ function renderPropertyDetail() {
     </div>
   `;
 
-  document.querySelectorAll('.thumb-small').forEach(el=>{
-    el.addEventListener('click', (ev)=>{
-      document.querySelectorAll('.thumb-small').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.thumb-small').forEach(el => {
+    el.addEventListener('click', (ev) => {
+      document.querySelectorAll('.thumb-small').forEach(t => t.classList.remove('active'));
       el.classList.add('active');
       document.getElementById('gallery-main').style.backgroundImage = `url('${el.dataset.src}')`;
     });
   });
 }
 
-(function initContactForm(){
+(function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
   const feedback = document.getElementById('contact-feedback');
@@ -254,7 +254,7 @@ function renderPropertyDetail() {
     if (!/^\S+@\S+\.\S+$/.test(email)) { feedback.textContent = 'Please enter a valid email.'; return; }
     if (message.length < 10) { feedback.textContent = 'Message must be at least 10 characters.'; return; }
     feedback.textContent = 'Sending message...';
-    setTimeout(()=> {
+    setTimeout(() => {
       feedback.textContent = 'Thank you! Your message has been sent. We will contact you soon.';
       form.reset();
     }, 800);
@@ -266,9 +266,29 @@ document.addEventListener('DOMContentLoaded', () => {
   initListingsFromUrl();
   renderPropertyDetail();
 
+
   const homeSearch = document.getElementById('home-search');
   if (homeSearch && window.location.pathname.endsWith('listings.html')) {
     const p = new URLSearchParams(window.location.search);
     homeSearch.value = p.get('q') || '';
   }
+
+  // Scroll Animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Only animate once
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
 });
